@@ -4,31 +4,72 @@
  
     <div class="container p-4">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-bady">
                         <form action="" method="post">
                             <div class="form-group">
                                 <div class="card-header bg-light">
-                            <h6 class="font-weight-bold mb-0">Registar Usuarios</h6>
+                            
+                            <h1 class="font-weight-bold mb-0"><img src="https://2.bp.blogspot.com/-mydoB2WTsZE/UREQSt28uAI/AAAAAAAAABs/9gTal2ahYDQ/s400/Logo.png" alt="">Documentos Anexos</h1>
                             </div>
                             </div>
                             <div class="form-group">
-                                <label>Nombre</label>
+                            <h6>Documentos Anexo</h6>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">1. Solicitud de grado</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">2.Copia documento identidad ampliada.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">3. Certificación presentación pruebas T&T - SABER PRO.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">4. Carné estudiantil.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">5.Foto carné egresado (tamaño 4x4 fondo blanco).</label>
+                                    </div>
+                                     <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">6. Certificación cumplimiento modalidad de grado - firmado por Director de Programa (Formato PA-ARC-F003).</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">7. Presentación Encuesta OLE ( M0 – M1)</label>
+                                    </div>
+                            </div>
+                           <div class="form-group">
+                                <label>Fecha Solicitud</label>
                                 <input class="form-control" type="text" name="nombre" id="">
                             </div>
                             <div class="form-group">
-                                <label>Precio</label>
-                                <input class="form-control" type="text" name="apellidos" id="">
+                                <label>Dirección de Contacto</label>
+                                <input class="form-control" type="text" name="nombre" id="">
                             </div>
                             <div class="form-group">
-                                <label>Marca</label>
-                                <input class="form-control" type="text" name="cedula" id="">
+                                <label>Ciudad</label>
+                                <input class="form-control" type="text" name="nombre" id="">
                             </div>
                             <div class="form-group">
-                                <label>Cantidad</label>
-                                <input class="form-control" type="text" name="celular" id="">
+                                <label>Teléfono</label>
+                                <input class="form-control" type="text" name="nombre" id="">
                             </div>
+                            <div class="form-group">
+                                <label>Celular</label>
+                                <input class="form-control" type="text" name="nombre" id="">
+                            </div>
+                            <div class="form-group">
+                                <label>Correo Electrónico</label>
+                                <input class="form-control" type="text" name="nombre" id="">
+                            </div>
+                            
                             <div class="form-group">
                                <button type="submit" class="btn btn-primary w-100">Registrar</button>
                                
@@ -37,43 +78,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h1>
-                        Registrar Empleados
-                    </h1>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">id</th>
-                                <th scope="col">nombre</th>
-                                <th scope="col">apellidos</th>
-                                <th scope="col">cédula</th>
-                                <th scope="col">celular</th>
-                                <th scope="col">#</th>
-                                
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each empleados}}
-                                <tr>
-                                <th scope="row">{{id}}</th>
-                                <td>{{nombre}}</td>
-                                <td>{{apellidos}}</td>
-                                <td>{{cedula}}</td>
-                                <td>{{celular}}</td>
-                                <td>
-                                    <a href="delete/{{id}}" class="far fa-trash-alt btn btn-danger"></a>
-                                    <a href="/empleados/update" class="btn btn-info">Modificar</a>
-                                </td>
-                                </tr>
-                                {{/each}}
-                            </tbody>
-                            
-                        </table>
-                </div>
-            </div>
         </div>
-    </div>
  </div>
 </div>
