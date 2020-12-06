@@ -1,0 +1,76 @@
+<div class="container-fluid">
+          <!-- Content Row -->
+ <div class="row">
+ 
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-bady">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <div class="card-header bg-light">
+                            <h6 class="font-weight-bold mb-0">Registar Usuarios</h6>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Repararación 1</label>
+                                <input class="form-control" type="text" name="nombre" id="">
+                            </div>
+                            <div class="form-group">
+                                <label>Reparaición 2</label>
+                                <input class="form-control" type="text" name="apellidos" id="">
+                            </div>
+                            <div class="form-group">
+                                <label>Reparacion 3</label>
+                                <input class="form-control" type="text" name="cedula" id="">
+                            </div>
+                            
+                            <div class="form-group">
+                               <button type="submit" class="btn btn-primary w-100">Registrar</button>
+                               
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1>
+                        Registrar Empleados
+                    </h1>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">nombre</th>
+                                <th scope="col">apellidos</th>
+                                <th scope="col">cédula</th>
+                                <th scope="col">celular</th>
+                                <th scope="col">#</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each empleados}}
+                                <tr>
+                                <th scope="row">{{id}}</th>
+                                <td>{{nombre}}</td>
+                                <td>{{apellidos}}</td>
+                                <td>{{cedula}}</td>
+                                <td>{{celular}}</td>
+                                <td>
+                                    <a href="delete/{{id}}" class="far fa-trash-alt btn btn-danger"></a>
+                                    <a href="/empleados/update" class="btn btn-info">Modificar</a>
+                                </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                            
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+</div>
