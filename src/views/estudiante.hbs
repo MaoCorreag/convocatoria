@@ -1,0 +1,180 @@
+<div class="w-100">
+    {{> navbar user=user}}
+    <div id="content" class="bg-white w-100">
+        <div class="container-fluid">
+            {{#if_eq user.estado '0'}}
+                <div class="alert alert-warning" role="alert">
+                    <p>Solicitud en espera</p>
+                </div>
+            {{/if_eq}}
+            {{#if_eq user.estado '1'}}
+                <div class="alert alert-info" role="alert">
+                    <p>Solicitud aprobada</p>
+                </div>
+            {{/if_eq}}
+            {{#if_eq user.estado '2'}}
+                <div class="alert alert-danger" role="alert">
+                    <p>Solicitud rechazada por: </p>
+                </div>
+            {{/if_eq}}
+            {{#if_eq user.idSolicitud null}}
+                <div class="container p-4">
+                    <div class="card">
+                        <div class="card-bady">
+                            <form action="" method="post">
+                                <h6>Datos Básicos</h6>
+                                <div class="form-group">
+                                    <div class="card-header bg-light">
+                                        <img src="https://2.bp.blogspot.com/-mydoB2WTsZE/UREQSt28uAI/AAAAAAAAABs/9gTal2ahYDQ/s400/Logo.png" alt="">
+                                        <h1 class="font-weight-bold mb-0">Formato Solicitud Grado</h1>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nombre y Apellidos</label>
+                                    <input class="form-control" type="text" name="nombres" id="" value="{{user.nombres}}" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <h6>Documento de Identidad</h6>
+                                        <input type="radio" class="form-check-input" name="documento" id="CC" value="CC">
+                                        <label class="form-check-label" for="CC">C.C.</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" name="documento" id="CE" value="CE">
+                                        <label class="form-check-label" for="CE">C.E.</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="number">No.</label>
+                                        <input class="form-control" type="text" name="no" id="number">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>lugar Expedición</label>
+                                    <input class="form-control" type="text" name="lugarx" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Código Estudiantil</label>
+                                    <input class="form-control" type="text" name="codigo" id="">
+                                </div>
+                                <div class="form-group">
+                                    <h6>Ciclo Profesional</h6>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="tecnico" id="">
+                                        <label class="form-check-label" for="exampleCheck1">Técnico</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="tecnologo" id="">
+                                        <label class="form-check-label" for="exampleCheck1">Tecnólogico</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="profesional" id="">
+                                        <label class="form-check-label" for="exampleCheck1">Profesional</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h6>Ultimo Semestre Cursado</h6>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="periodoa" id="">
+                                        <label class="form-check-label" for="exampleCheck1">Periodo A (Enero - Junio) </label>
+                                        <input class="form-control" type="text" name="añoa" id="">
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="periodob" id="">
+                                        <label class="form-check-label" for="exampleCheck1">Periodo A (Julio - Diciembre) </label>
+                                        <input class="form-control" type="text" name="añob" id="">
+                                    </div>
+
+                                </div>
+                                <h6>Seleccionar Modalidad de Grado</h6>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="monografia" id="">
+                                    <label class="form-check-label" for="exampleCheck1">Monografía</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="tesis" id="">
+                                    <label class="form-check-label" for="exampleCheck1">Trabajo de Grado (Tesis)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="seminario" id="">
+                                    <label class="form-check-label" for="exampleCheck1">Seminario de Grado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="desarrollo" id="">
+                                    <label class="form-check-label" for="exampleCheck1">Desarrollo Tecnológico</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="plan" id="">
+                                    <label class="form-check-label" for="exampleCheck1">Plan de Negocios</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="practica" id="">
+                                    <label class="form-check-label" for="exampleCheck1">Práctica Empresarial</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Nombre del trabajo de grado, monografía, plan de negocios, desarrollo tecnológico o seminario de grado</label>
+                                    <textarea class="form-control" name="tgrado" id="" rows="5"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nombre del director del trabajo de grado ó tutor empresarial</label>
+                                    <input class="form-control" type="text" name="director" id="">
+                                </div>
+                                <h6>Documentos Anexo</h6>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="solicitud" id="">
+                                    <label class="form-check-label" for="exampleCheck1">1. Solicitud de grado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="copia" id="">
+                                    <label class="form-check-label" for="exampleCheck1">2.Copia documento identidad ampliada.</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="icfes" id="">
+                                    <label class="form-check-label" for="exampleCheck1">3. Certificación presentación pruebas T&T - SABER PRO.</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="carnet" id="">
+                                    <label class="form-check-label" for="exampleCheck1">4. Carné estudiantil.</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="foto" id="">
+                                    <label class="form-check-label" for="exampleCheck1">5.Foto carné egresado (tamaño 4x4 fondo blanco).</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="modalidad" id="">
+                                    <label class="form-check-label" for="exampleCheck1">6. Certificación cumplimiento modalidad de grado - firmado por Director de Programa (Formato PA-ARC-F003).</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="encuenta" id="">
+                                    <label class="form-check-label" for="exampleCheck1">7. Presentación Encuesta OLE ( M0 – M1)</label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dirección de Contacto</label>
+                                    <input class="form-control" type="text" name="direccion" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input class="form-control" type="text" name="ciudad" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input class="form-control" type="text" name="telefono" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Celular</label>
+                                    <input class="form-control" type="text" name="celular" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Correo Electrónico</label>
+                                    <input class="form-control" type="text" name="correo" id="">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary w-100">Registrar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {{/if_eq}}
+        </div>
+    </div>
+</div>

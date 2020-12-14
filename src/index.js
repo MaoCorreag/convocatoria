@@ -1,7 +1,10 @@
 const express= require('express');
 const morgan= require('morgan');
 const exphbs= require('express-handlebars');
+const session = require('express-session')
+const cookieParser =  require('cookie-parser');
 const path= require('path');
+const {privateKey}=require('./keys');
 
 //inicio
 const app = express();
@@ -24,25 +27,20 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
+app.use(cookieParser());
+app.use(session({secret: privateKey, cookie: { maxAge: 600000 }}))
 //variables globales
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
+    res.locals.session = req.session;
     next();
 });
 
 //rutas
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
-app.use('/links',require('./routes/links'));
-app.use('/usuarios',require('./routes/usuarios'));
-app.use('/registro',require('./routes/registro'));
-app.use('/diag',require('./routes/diag'));
-app.use('/reparacion',require('./routes/reparacion'));
-app.use('/estado',require('./routes/estado'));
-app.use('/accesorios',require('./routes/accesorios'));
-app.use('/facturacion',require('./routes/facturacion'));
-app.use('/premium',require('./routes/premium'));
-app.use('/basic',require('./routes/basic'));
-app.use('/pro',require('./routes/pro'));
+app.use('/estudiante',require('./routes/basic'));
+app.use('/admin',require('./routes/admin'));
+app.use('/coordinador',require('./routes/coordinador'));
 
 //public
 app.use(express.static(path.join(__dirname,'public')));

@@ -1,0 +1,37 @@
+<div class="w-100">
+    {{> navbar user=user}}
+    <div id="content" class="bg-white w-100">
+        <div class="card-body">
+            <h1>Solicitudes</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">apellidos</th>
+                    <th scope="col">cédula</th>
+                    <th scope="col">celular</th>
+                    <th scope="col">#</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {{#each empleados}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td>{{nombre}}</td>
+                        <td>{{apellidos}}</td>
+                        <td>{{cedula}}</td>
+                        <td>{{celular}}</td>
+                        <td>
+                            <a href="delete/{{id}}" class="far fa-trash-alt btn btn-danger"></a>
+                            <a href="/empleados/update" class="btn btn-info">Modificar</a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
