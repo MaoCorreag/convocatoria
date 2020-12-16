@@ -21,6 +21,7 @@ app.engine('.hbs',exphbs({
 
 }));
 app.set('view engine','hbs');
+app.use('/static', express.static(__dirname + '/public'));
 
 //peticiones
 app.use(morgan('dev'));
@@ -28,7 +29,12 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 app.use(cookieParser());
-app.use(session({secret: privateKey, cookie: { maxAge: 600000 }}))
+app.use(session({
+    secret: privateKey,
+    cookie: { maxAge: 600000 },
+    resave: false,
+    saveUninitialized: true,
+}))
 //variables globales
 app.use((req, res, next) => {
     res.locals.session = req.session;
@@ -41,6 +47,8 @@ app.use(require('./routes/authentication'));
 app.use('/estudiante',require('./routes/basic'));
 app.use('/admin',require('./routes/admin'));
 app.use('/coordinador',require('./routes/coordinador'));
+app.use('/solicitud',require('./routes/solicitud'));
+app.all('*', (_, res) => res.redirect('/'));
 
 //public
 app.use(express.static(path.join(__dirname,'public')));

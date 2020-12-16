@@ -1,37 +1,44 @@
 <div class="w-100">
     {{> navbar user=user}}
+    {{#if alert}}
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {{alert}}
+        <form method="get" action="/coordinador">
+            <button type="submit" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </form>
+      </div>
+    {{/if}}
     <div id="content" class="bg-white w-100">
-        <div class="card-body">
-            <h1>Solicitudes</h1>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">nombre</th>
-                    <th scope="col">apellidos</th>
-                    <th scope="col">cédula</th>
-                    <th scope="col">celular</th>
-                    <th scope="col">#</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                {{#each empleados}}
+        <div class="card">
+            <div class="card-body">
+                <h1>Solicitudes Pendientes</h1>
+                <table class="table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{id}}</th>
-                        <td>{{nombre}}</td>
-                        <td>{{apellidos}}</td>
-                        <td>{{cedula}}</td>
-                        <td>{{celular}}</td>
-                        <td>
-                            <a href="delete/{{id}}" class="far fa-trash-alt btn btn-danger"></a>
-                            <a href="/empleados/update" class="btn btn-info">Modificar</a>
-                        </td>
+                        <th scope="col">id</th>
+                        <th scope="col">Estudiante</th>
+                        <th scope="col">Programa</th>
+                        <th scope="col">Fecha Solicitud</th>
+                        <th scope="col">#</th>
                     </tr>
-                {{/each}}
-                </tbody>
-
-            </table>
+                    </thead>
+                    <tbody>
+                    {{#each list}}
+                        <tr>
+                            <th scope="row">{{idSolicitud}}</th>
+                            <td>{{estudiante}}</td>
+                            <td>{{programa}}</td>
+                            <td>{{fecha_solicitud}}</td>
+                            <td>
+                                <a href="/solicitud/{{idSolicitud}}" class="btn btn-info">Revisar</a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

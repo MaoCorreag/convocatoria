@@ -1,0 +1,229 @@
+<div class="w-100">
+    {{> navbar user=user back=back}}
+    <div class="container h-70 pb-3">
+        <div class="container bg-light">
+            <div class="row">
+                <div class="col text-center">
+                    <img class="img-fluid mt-2" src="/static/assets/img/image1.png" alt="FET">
+                </div>
+                <div class="col-8 text-center">
+                    <h2 class="font-weight-bold mt-2">Formato Solicitud Grado</h2>
+                    <h4 class="font-weight-bold">Proceso Relacionado Grado</h4>
+                </div>
+                <div class="col-2 border text-center">
+                    <h6 class="mt-2">Fecha de Solicitud</h6>
+                    <p class="">{{data.fecha_solicitud}}</p>
+                </div>
+            </div>
+        </div>
+        <form>
+            <fieldset class="fieldset" disabled>
+                <h5 class="text-center bg-light mt-4 mb-4">DATOS BÁSICOS</h5>
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label">Estudiante</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputName" placeholder="Password" value="{{data.nombres}}">
+                    </div>
+                </div>
+                <div class="row border">
+                    <div class="col border text-center">
+                        <h6>Documento de Identidad</h6>
+                        <div class="container mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="radio" class="form-check-input" name="documento" id="CC" value="CC" {{setChecked "CC" data.documento}}>
+                                    <label class="form-check-label" for="CC">C.C.</label>
+                                </div>
+                                <div class="col">
+                                    <input type="radio" class="form-check-input" name="documento" id="CE" value="CE" {{setChecked "CE" data.documento}}>
+                                    <label class="form-check-label" for="CE">C.E.</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-2">
+                            <label for="no_documento" class="col-sm-2 col-form-label">No.</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="number" name="no_documento" id="number" value="{{data.no_documento}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col border">
+                        <label>Lugar Expedición</label>
+                        <input class="form-control" type="text" name="lugar_exp" id="" value="{{data.lugar_exp}}" required>
+                    </div>
+                    <div class="col border">
+                        <label>Código Estudiantil</label>
+                        <input class="form-control" type="text" name="codigo" id="" value="{{data.codigo}}" required>
+                    </div>
+                </div>
+                <div class="form-group mt-4">
+                    <h6>Ciclo Profesional</h6>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="tipo" id="tecnico" value="tecnico" {{setChecked "tecnico" data.tipo}}>
+                        <label class="form-check-label" for="tecnico">Técnico</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="tipo" id="tecnologo" value="tecnologo" {{setChecked "tecnologo" data.tipo}}>
+                        <label class="form-check-label" for="tecnologo">Tecnólogico</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="tipo" id="profesional" value="profesional" {{setChecked "profesional" data.tipo}}>
+                        <label class="form-check-label" for="profesional">Profesional</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="programa"><h6>Programa</h6></label>
+                    <select class="form-control" id="programa" name="programa">
+                        <option {{setSelected "ambiental" data.programa}}>ambiental</option>
+                        <option {{setSelected "software" data.programa}}>software</option>
+                        <option {{setSelected "alimentos" data.programa}}>alimentos</option>
+                        <option {{setSelected "eléctrica" data.programa}}>eléctrica</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <h6>Ultimo Semestre Cursado</h6>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="periodo" id="periodoa" value="Periodo A" {{setPeriod "Periodo A" data.semestre}}>
+                            <label class="form-check-label" for="periodoa">Periodo A (Enero - Junio) </label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="periodo" id="periodob" value="Periodo B" {{setPeriod "Periodo B" data.semestre}}>
+                            <label class="form-check-label" for="periodob">Periodo A (Julio - Diciembre) </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group row mt-0">
+                        <label for="year" class="col-sm-2 col-form-label">Del año</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">20</div>
+                            </div>
+                            <input type="number" min="00" max="20" class="form-control" placeholder="20" aria-label="year" id="year" name="year" aria-describedby="year" value="{{setYear data.semestre}}">
+                        </div>
+                    </div>
+                </div>
+                <h6 class="text-center bg-light mt-4 mb-4">INFORMACIÓN MODALIDAD DE GRADO</h6>
+                <div class="row border">
+                    <div class="col border">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="modalidad" id="monografia" {{setChecked "monografia" data.modalidad}}>
+                            <label class="form-check-label" for="monografia">Monografía</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="modalidad" id="tesis" {{setChecked "tesis" data.modalidad}}>
+                            <label class="form-check-label" for="tesis">Trabajo de Grado (Tesis)</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="modalidad" id="seminario" {{setChecked "seminario" data.modalidad}}>
+                            <label class="form-check-label" for="seminario">Seminario de Grado</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="modalidad" id="desarrollo" {{setChecked "desarrollo" data.modalidad}}>
+                            <label class="form-check-label" for="desarrollo">Desarrollo Tecnológico</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="modalidad" id="plan" {{setChecked "plan" data.modalidad}}>
+                            <label class="form-check-label" for="plan">Plan de Negocios</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="modalidad" id="practica" {{setChecked "practica" data.modalidad}}>
+                            <label class="form-check-label" for="practica">Práctica Empresarial</label>
+                        </div>
+                    </div>
+                    <div class="col border">
+                        <div class="form-group">
+                            <label for="nombre_tg">Nombre del trabajo de grado, monografía, plan de negocios, desarrollo tecnológico o seminario de grado</label>
+                            <textarea class="form-control" name="nombre_tg" id="nombre_tg" rows="5">
+                                {{data.nombre_tg}}
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="director">Nombre del director del trabajo de grado ó tutor empresarial</label>
+                            <input class="form-control" type="text" name="director" id="director" value="{{data.director}}">
+                        </div>
+                    </div>
+                </div>
+                <h6 class="text-center bg-light mt-4 mb-4">DOCUMENTOS ANEXOS</h6>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="solicitud_grado" id="solicitud_grado" {{setTrue data.solicitud_grado}}>
+                    <label class="form-check-label" for="solicitud_grado">1. Solicitud de grado</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="copia_documento" id="copia_documento" {{setTrue data.copia_documento}}>
+                    <label class="form-check-label" for="copia_documento">2.Copia documento identidad ampliada.</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="certi_saber" id="certi_saber" {{setTrue data.certi_saber}}>
+                    <label class="form-check-label" for="certi_saber">3. Certificación presentación pruebas T&T - SABER PRO.</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="carnet" id="carnet" {{setTrue data.carnet}}>
+                    <label class="form-check-label" for="carnet">4. Carné estudiantil.</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="foto_carnet" id="foto_carnet" {{setTrue data.foto_carnet}}>
+                    <label class="form-check-label" for="foto_carnet">5.Foto carné egresado (tamaño 4x4 fondo blanco).</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="certi_grado" id="certi_grado" {{setTrue data.certi_grado}}>
+                    <label class="form-check-label" for="certi_grado">6. Certificación cumplimiento modalidad de grado - firmado por Director de Programa (Formato PA-ARC-F003).</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="encuesta" id="encuesta" {{setTrue data.encuesta}}>
+                    <label class="form-check-label" for="encuesta">7. Presentación Encuesta OLE ( M0 – M1)</label>
+                </div>
+                <div class="bg-light mt-4 mb-4">
+                    <div class="row">
+                        <div class="col">
+                            <label for="direccion">Dirección de Contacto</label>
+                            <input class="form-control" type="text" name="direccion" id="direccion" value="{{data.direccion}}">
+                        </div>
+                        <div class="col">
+                            <label for="ciudad">Ciudad</label>
+                            <input class="form-control" type="text" name="ciudad" id="ciudad" value="{{data.ciudad}}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="telefono">Teléfono</label>
+                            <input class="form-control" type="tel" name="telefono" id="telefono" value="{{data.telefono}}" required>
+                        </div>
+                        <div class="col">
+                            <label for="celular">Celular</label>
+                            <input class="form-control" type="tel" name="celular" id="celular" value="{{data.celular}}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input class="form-control" type="email" name="correo" id="" value="{{data.correo}}" disabled>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col">
+                    <button id="approveRequest" class="btn btn-success w-100">Aprobar Solicitud</button>
+                </div>
+                <div class="col">
+                    <button id="rejectRequest" class="btn btn-danger w-100">Rechazar Solicitud</button>
+                </div>
+            </div>
+        </div>
+        <form id="sendRequest" method="post" action="/solicitud/{{data.idSolicitud}}" style="display: none">
+            <fieldset class="border p-2">
+                <legend class="w-auto" id="legendRequest">.</legend>
+                <div class="form-group" id="formReject" style="display: none">
+                    <label for="comentarios">Comentarios</label>
+                    <input type="text" class="form-control" id="comentarios" name="comentarios" placeholder="Razones del rechazo">
+                </div>
+                <div class="form-group" id="formApprove" style="display: none">
+                    <label for="fecha_grado">Fecha de grado</label>
+                    <input class="form-control" type="date" name="fecha_grado" id="fecha_grado">
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitRequest">Enviar</button>
+                <button class="btn" id="cancelRequest">Cancelar</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
